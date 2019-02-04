@@ -4,7 +4,7 @@ class CreateRejections < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.string :company
       t.string :stage_of_rejection
-      t.integer :points
+      t.string :rejection_url
       t.timestamps
     end
   end

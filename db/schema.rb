@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_225310) do
     t.bigint "user_id"
     t.string "company"
     t.string "stage_of_rejection"
-    t.integer "points"
+    t.string "rejection_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rejections_on_user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_225310) do
     t.string "email"
     t.string "cohort_name"
     t.string "password_digest"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

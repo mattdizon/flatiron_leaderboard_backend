@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 			post '/login', to: 'auth#create'
 			get '/profile', to: 'users#profile'
 			get '/current_user', to: "auth#show"
+			resources :rejections
 		end
 	end
 end

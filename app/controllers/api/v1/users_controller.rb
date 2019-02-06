@@ -1,11 +1,18 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    #skip_before_action :authorized, only: [:create]
     def profile
        render json: { user: UserSerializer.new(current_user) }, status: :accepted
      end
     def index
         @users = User.all
-        render json: @users
+    #    @userArr = []
+    #    @users.each do |user|
+    #        @userArr << {
+    #            user:user,
+    #            rejections:user.rejections.count
+    #                }
+    #    end
+        render json: @users, include: [:rejections]
     end
     def create
         @user = User.create!(user_params)

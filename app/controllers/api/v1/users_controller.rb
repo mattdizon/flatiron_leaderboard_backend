@@ -5,7 +5,6 @@ class Api::V1::UsersController < ApplicationController
      end
     def index
         @users = User.all
-
         render json: (@users.sort_by{|user| user.rejections.count}).reverse, include: [:rejections]
     end
 

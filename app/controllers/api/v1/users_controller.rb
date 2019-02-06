@@ -5,15 +5,10 @@ class Api::V1::UsersController < ApplicationController
      end
     def index
         @users = User.all
-    #    @userArr = []
-    #    @users.each do |user|
-    #        @userArr << {
-    #            user:user,
-    #            rejections:user.rejections.count
-    #                }
-    #    end
-        render json: @users, include: [:rejections]
+
+        render json: (@users.sort_by{|user| user.rejections.count}).reverse, include: [:rejections]
     end
+
     def create
         @user = User.create!(user_params)
         if @user.valid?

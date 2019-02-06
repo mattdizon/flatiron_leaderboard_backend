@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
        if @rejections.length==0
          @rejections=[]
        end
-      render json: {user: {f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
+      render json: {user: { id:@user.id,f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
        # render json: { user: UserSerializer.new(current_user) }, status: :accepted
      end
     def index

@@ -17,8 +17,12 @@ class Api::V1::AuthController < ApplicationController
 		token = JWT.decode(string, 'l3arn_l0v3_c0d3')[0]
 		id = token["user_id"].to_i
 		@user = User.find(id)
+		@rejections=@user.rejections
+		if @rejections.length==0
+			@rejections=[]
+		end
 		if @user
-			render json: {user: {f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar}}
+			render json: {user: {f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
 		else
 			render json: {error: "User not found"}, status: 422
 		end

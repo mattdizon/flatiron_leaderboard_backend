@@ -6,7 +6,9 @@ class Api::V1::UsersController < ApplicationController
        if @rejections.length==0
          @rejections=[]
        end
-      render json: {user: { id:@user.id,f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
+      render json: {user: { id:@user.id,f_name: @user.f_name, l_name: @user.l_name,
+          username: @user.username, email:@user.email, cohort_name: @user.cohort_name,
+           avatar: @user.avatar, rejections:@rejections}}
        # render json: { user: UserSerializer.new(current_user) }, status: :accepted
      end
     def index
@@ -14,11 +16,8 @@ class Api::V1::UsersController < ApplicationController
         render json: (@users.sort_by{|user| user.rejections.count}).reverse, include: [:rejections]
     end
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> tshBranch
     def create
         @user = User.create!(user_params)
         if @user.valid?
@@ -27,6 +26,9 @@ class Api::V1::UsersController < ApplicationController
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end
+    end
+
+    def user_profile
     end
 
     private

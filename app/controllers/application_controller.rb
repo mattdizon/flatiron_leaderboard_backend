@@ -9,10 +9,6 @@ class ApplicationController < ActionController::API
     end
 
     def decoded_token
-<<<<<<< HEAD
-
-=======
->>>>>>> tshBranch
        if auth_header
          token = auth_header.split(' ')[0]
          # header: { 'Authorization': 'Bearer <token>' }

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 			resources :users, only: [:create, :index]
 			resources :rejections, only: [:create, :destroy]
 			post '/login', to: 'auth#create'
-			get '/profile', to: 'users#profile'
+			get '/profile/', to: 'users#profile'
 			get '/current_user', to: "auth#show"
 			resources :rejections
 		end

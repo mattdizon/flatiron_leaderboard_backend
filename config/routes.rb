@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 			get '/profile/', to: 'users#profile'
 			get '/current_user', to: "auth#show"
 			resources :rejections
+      resources :cohorts, only: [:create,:index]
 		end
 	end
 end

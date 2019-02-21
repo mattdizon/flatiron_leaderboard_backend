@@ -18,7 +18,14 @@ class Api::V1::UsersController < ApplicationController
         render json: @sorted, include: [:rejections]
     end
 
-
+    def destroy
+      @user=User.find_by(id:params["id"])
+      @rejections=@user.rejections
+      @rejections.each do |rejection|
+        rejection.destroy
+      end
+      @user.destroy
+    end
 
     def create
         @user = User.create!(user_params)

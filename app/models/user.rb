@@ -3,7 +3,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: {case_sensitive: false}
     validates :email, uniqueness: {case_sensitive: false}
     validates :email, uniqueness: {case_sensitive: false}
-     validates :password, :presence => true,
+    validates :password, :presence => true,
                          :length => {:within => 6..40},
                          :on => :create
     has_many :rejections

@@ -22,7 +22,7 @@ class Api::V1::AuthController < ApplicationController
 			@rejections=[]
 		end
 		if @user
-			render json: {user: {f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
+			render json: {user: {id: @user.id, f_name: @user.f_name, l_name: @user.l_name, username: @user.username, email:@user.email, cohort_name: @user.cohort_name, avatar: @user.avatar, rejections:@rejections}}
 		else
 			render json: {error: "User not found"}, status: 422
 		end

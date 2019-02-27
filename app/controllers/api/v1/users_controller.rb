@@ -40,6 +40,18 @@ class Api::V1::UsersController < ApplicationController
     def user_profile
     end
 
+    def update
+     @user = User.find(params[:id])
+      @user.update(user_params)
+      @rejections=@user.rejections
+      if @rejections.length==0
+        @rejections=[]
+      end
+     render json: {user: { id:@user.id,f_name: @user.f_name, l_name: @user.l_name,
+         username: @user.username, email:@user.email, cohort_name: @user.cohort_name,
+          avatar: @user.avatar, rejections:@rejections}}
+
+    end
     private
     def user_params
         params.require(:user).permit(:username, :password, :email, :cohort_name, :avatar, :f_name, :l_name)
